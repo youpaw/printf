@@ -1,0 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_util_width.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/02 22:42:05 by dbutterw          #+#    #+#             */
+/*   Updated: 2019/10/02 22:42:05 by dbutterw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+void	ft_util_width(char **res, int width, short align)
+{
+	int		len;
+	char	*tmp;
+	char 	*fmt;
+
+	if (!res || !*res || (len = ft_strlen(*res)) >= width)
+		return ;
+	len = width - len;
+	if ((tmp = ft_strnew(len)))
+		tmp = ft_memset(tmp, ' ', len);
+	if (align)
+		fmt = ft_strjoin(*res, tmp);
+	else
+		fmt = ft_strjoin(tmp, *res);
+	free(*res);
+	if (tmp)
+		free(tmp);
+	*res = fmt;
+}

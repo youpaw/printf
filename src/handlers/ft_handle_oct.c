@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_handle_oct.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/01 20:16:46 by dbutterw          #+#    #+#             */
+/*   Updated: 2019/10/05 18:51:36 by dbutterw         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+ssize_t		ft_handle_oct(t_params *params, va_list args)
+{
+	char *res;
+	char *tmp;
+
+	res = ft_itoabase(ft_util_usize(args, params->size), 8, 0);
+	if (res && params->flags[3] && *res != '0')
+	{
+		tmp = ft_strjoin("0", res);
+		free(res);
+		res = tmp;
+		params->rigor--;
+	}
+	ft_util_rigor(&res, params, params->flags[3]);
+	ft_util_width(&res, params->width, params->flags[0]);
+	return (ft_util_print(&res));
+}
