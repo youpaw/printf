@@ -18,6 +18,7 @@ ssize_t		ft_handle_chr(t_params *params, va_list args)
 	char 	out;
 	ssize_t	ret;
 
+	pad = ft_strnew(1);
 	out = (char)va_arg(args, int);
 	params->width--;
 	params->rigor = -1;
