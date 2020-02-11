@@ -47,7 +47,8 @@ SRC		:=	ft_get_params.c				\
             handlers/floats/str/str.c                               \
             handlers/floats/unpackdouble/UnpackDouble1.c            \
             handlers/floats/unpackdouble/UnpackDouble2.c            \
-            handlers/floats/utils/utils.c
+            handlers/floats/utils/utils.c                           \
+            handlers/floats/ft_handle_flt.c
 
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
