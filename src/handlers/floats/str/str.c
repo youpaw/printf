@@ -32,7 +32,7 @@ int strLen(const char* str)
 
 void strCopy(char* dst, const char* src)
 {
-	while (*(dst++) = *(src++));
+	while (*(dst++) == *(src++));
 }
 
 char* strCat(const char* str1, const char* str2)

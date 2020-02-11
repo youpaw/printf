@@ -11,7 +11,14 @@
 #******************************************************************************#
 
 SRC_DIR := ./src
-INC_DIR := ./includes ./libft
+INC_DIR := -I includes                             \
+            -I libft                               \
+            -I src/handlers/floats/bigint          \
+            -I src/handlers/floats/doubleunpacked  \
+            -I src/handlers/floats/printdouble     \
+            -I src/handlers/floats/str             \
+            -I src/handlers/floats/unpackdouble    \
+            -I src/handlers/floats/utils
 OBJ_DIR := ./obj
 
 SRC		:=	ft_get_params.c				\
@@ -31,16 +38,16 @@ SRC		:=	ft_get_params.c				\
             utils/ft_util_sign.c		\
             utils/ft_util_size.c		\
             utils/ft_util_width.c       \
-            src/handlers/floats/bigint/BigIntArithmetics.c              \
-            src/handlers/floats/bigint/BigIntHelper.c                   \
-            src/handlers/floats/bigint/BigIntOperatoins.c               \
-            src/handlers/floats/bigint/BigIntPrint.c                    \
-            src/handlers/floats/doubleunpacked/PrintDoubleUnpacked.c    \
-            src/handlers/floats/printdouble/PrintDouble.c               \
-            src/handlers/floats/str/str.c                               \
-            src/handlers/floats/unpackdouble/UnpackDouble1.c            \
-            src/handlers/floats/unpackdouble/UnpackDouble2.c            \
-            src/handlers/floats/utils/utils.c
+            handlers/floats/bigint/BigIntArithmetics.c              \
+            handlers/floats/bigint/BigIntHelper.c                   \
+            handlers/floats/bigint/BigIntOperatoins.c               \
+            handlers/floats/bigint/BigIntPrint.c                    \
+            handlers/floats/doubleunpacked/PrintDoubleUnpacked.c    \
+            handlers/floats/printdouble/PrintDouble.c               \
+            handlers/floats/str/str.c                               \
+            handlers/floats/unpackdouble/UnpackDouble1.c            \
+            handlers/floats/unpackdouble/UnpackDouble2.c            \
+            handlers/floats/utils/utils.c
 
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
@@ -57,6 +64,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 	mkdir -p $(OBJ_DIR)/utils
 	mkdir -p $(OBJ_DIR)/handlers
+	mkdir -p $(OBJ_DIR)/handlers/floats
 	mkdir -p $(OBJ_DIR)/handlers/floats/bigint
 	mkdir -p $(OBJ_DIR)/handlers/floats/doubleunpacked
 	mkdir -p $(OBJ_DIR)/handlers/floats/printdouble
@@ -65,7 +73,7 @@ $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)/handlers/floats/utils
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | lib
-	gcc $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
+	gcc $(CFLAGS) $(INC_DIR) -o $@ -c $<
 
 $(NAME): $(OBJ_DIR) $(OBJ) | lib
 	ar rcs $(NAME) $(OBJ) ./libft/*.o

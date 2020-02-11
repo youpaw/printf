@@ -54,6 +54,7 @@ void unpackHuge(BigInt* integer, BigInt* fractional, uint32_t e, uint64_t m)
 	BigInt mantiss;
 	BigInt pow;
 
+	(void)fractional;
 	m |= 0x0010000000000000;
 	bigIntFromInt(&mantiss, m);
 	nPowY(&pow, 2, e - 52);
