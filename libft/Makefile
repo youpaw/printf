@@ -25,7 +25,7 @@ ft_strat.c ft_memrealloc.c ft_memchrat.c get_next_line.c
 
 OBJ = $(SRC:%.c=%.o)
 
-HEAD = libft.h
+HEAD = .
 
 NAME = libft.a
 

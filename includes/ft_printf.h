@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stddef.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # define N_FLAGS 5
 # define FLAGS "-+ #0"
 
@@ -38,7 +38,7 @@ ssize_t			ft_util_handle(char **format, va_list args);
 
 ssize_t			ft_util_size(va_list args, char size);
 
-uintmax_t		ft_util_usize(va_list args, char size);
+size_t			ft_util_usize(va_list args, char size);
 
 void			ft_util_rigor(char **res, t_params *params, int pad);
 

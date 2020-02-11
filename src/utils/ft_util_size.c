@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdint.h>
 
 ssize_t	ft_util_size(va_list args, char size)
 {

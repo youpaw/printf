@@ -13,7 +13,7 @@
 #ifndef FT_HANDLERS_H
 # define FT_HANDLERS_H
 # include "ft_printf.h"
-# define N_TYPES 9
+# define N_TYPES 10
 
 typedef struct					s_handlers
 {
@@ -35,6 +35,8 @@ ssize_t							ft_handle_str(t_params *params, va_list args);
 
 ssize_t							ft_handle_ptr(t_params *params, va_list args);
 
+ssize_t							ft_handle_flt(t_params *params, va_list args);
+
 ssize_t							ft_handle_nul(t_params *params);
 
 static const t_handlers			handlers[N_TYPES] =
@@ -47,7 +49,8 @@ static const t_handlers			handlers[N_TYPES] =
 		{'X', &ft_handle_hex},
 		{'c', &ft_handle_chr},
 		{'s', &ft_handle_str},
-		{'p', &ft_handle_ptr}
+		{'p', &ft_handle_ptr},
+		{'f', &ft_handle_flt}
 };
 
 #endif
