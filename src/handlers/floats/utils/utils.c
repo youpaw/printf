@@ -37,6 +37,6 @@ int bitWidth(uint64_t bits)
 
 void strShiftLeft(char* str)
 {
-	while (*str == *(str + 1))
+	while ((*str = *(str + 1)))
 		++str;
 }
