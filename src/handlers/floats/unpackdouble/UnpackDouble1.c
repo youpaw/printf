@@ -1,6 +1,7 @@
 #include "UnpackDouble.h"
 #include "BigInt.h"
 #include "DoubleUnpacked.h"
+#include "DoubleRepresentation.h"
 
 DoubleUnpacked assignDoubleUnpacked(int sign, BigInt* integer, BigInt* fractional, int special)
 {
@@ -14,41 +15,40 @@ DoubleUnpacked assignDoubleUnpacked(int sign, BigInt* integer, BigInt* fractiona
 	return result;
 }
 
-void unpackDenormal(BigInt* integer, BigInt* fractional, uint64_t mantiss)
+void unpackDenormal(BigInt* integer, BigInt* fractional, double_bit_t mantiss)
 {
 	bigIntFromInt(integer, 0);
-	uint64_t fract = mantiss << 12;
+	double_bit_t fract = mantiss << (EXPONENT_SIZE_BITS + 1);
 	CalcFractional(fractional, fract, 1022, 1);
 }
 
-void unpackNormal(BigInt* integer, BigInt* fractional, uint64_t representation, uint64_t m)
+void unpackNormal(BigInt* integer, BigInt* fractional, double_bit_t representation, double_bit_t m)
 {
 	uint32_t e;
 
-	e = (int32_t)((representation & 0x7FF0000000000000) >> 52);
-	if (e < 1023)
+	e = exponent(representation);
+	if (e < EXPONENT_BIAS)
 		unpackBelowOne(integer, fractional, e, m);
 	else {
-		e -= 1023;
-		if (e <= 52)
+		e -= EXPONENT_BIAS;
+		if (e <= MANTISS_SIZE_BITS)
 			unpackAverage(integer, fractional, e, m);
 		else
 			unpackHuge(integer, fractional, e, m);
 	}
 }
 
-DoubleUnpacked unpackDouble(double d)
+DoubleUnpacked unpackDouble(long double d)
 {
-	uint64_t rep;
+	double_bit_t rep;
 	BigInt fractional;
 	BigInt integer;
 	int special;
 
-	rep = *(uint64_t*)(&d);
 	bigIntCreate(&fractional);
 	bigIntCreate(&integer);
 	special = 0;
-
+	rep = getRepresentation(d);
 	if (rep == 0x0 || rep == 0x8000000000000000)
 	{
 		bigIntFromInt(&integer, 0);
@@ -59,8 +59,8 @@ DoubleUnpacked unpackDouble(double d)
 	else if ((rep & 0xFFF0000000000000) == 0x7FF0000000000000 || (rep & 0xFFF0000000000000) == 0xFFF0000000000000) // NaN
 		special = DOUBLE_NAN;
 	else if ((rep & 0xFFF0000000000000) == 0x8000000000000000 || (rep & 0xFFF0000000000000) == 0) //denormalized
-		unpackDenormal(&integer, &fractional, rep & 0x000FFFFFFFFFFFFF);
+		unpackDenormal(&integer, &fractional, mantiss(rep));
 	else
-		unpackNormal(&integer, &fractional, rep, rep & 0x000FFFFFFFFFFFFF);
-	return assignDoubleUnpacked(rep >> 63, &integer, &fractional, special);
+		unpackNormal(&integer, &fractional, rep, mantiss(rep));
+	return assignDoubleUnpacked(sign(rep), &integer, &fractional, special);
 }

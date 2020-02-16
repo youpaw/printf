@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include "DoubleRepresentation.h"
 
 # define BIGINT_SIZE 200
 # define BIGINT_BASE (1000*1000*1000)
@@ -27,6 +28,6 @@ int printToStringImp(char* buff, int size, int i, int* curPos);
 int printToString(char* buff, int buffSize, int width, int i);
 void bigIntPrint(char* buff, int buffSize, const BigInt* bigInt, int isFrac);
 int bigIntDecimalSize(const BigInt* bi);
-void bigIntFromInt(BigInt* a, int64_t b);
+void bigIntFromInt(BigInt* a, double_bit_t b);
 
 #endif

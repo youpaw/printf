@@ -37,7 +37,7 @@ char* printDoubleUnpacked(const DoubleUnpacked* du, int totalWidth, int fracWidt
 	return str;
 }
 
-char* printDouble(double d, int totalWidth, int fractionalWidth)
+char* printDouble(long double d, int totalWidth, int fractionalWidth)
 {
 	DoubleUnpacked du;
 

@@ -1,7 +1,8 @@
 #include "BigInt.h"
 #include "Utils.h"
+#include "DoubleRepresentation.h"
 
-void CalcFractional(BigInt* fractional, uint64_t fract, int initialPow, int denormal)
+void CalcFractional(BigInt* fractional, double_bit_t fract, int initialPow, int denormal)
 {
 	int width;
 	BigInt pow;
@@ -21,7 +22,7 @@ void CalcFractional(BigInt* fractional, uint64_t fract, int initialPow, int deno
 	while (fract)
 	{
 		bigIntDivide(&pow, 2);
-		if (fract & 0x8000000000000000)
+		if ( msb(fract) )
 			bigIntAdd(fractional, &pow);
 		fract <<= 1;
 	}
@@ -29,34 +30,34 @@ void CalcFractional(BigInt* fractional, uint64_t fract, int initialPow, int deno
 }
 
 
-void unpackBelowOne(BigInt* integer, BigInt* fractional, uint32_t e, uint64_t m)
+void unpackBelowOne(BigInt* integer, BigInt* fractional, uint32_t e, double_bit_t m)
 {
-	uint64_t fract;
+	double_bit_t fract;
 
-	e = 1023 - e;
-	fract = m << 12;
+	e = EXPONENT_BIAS - e;
+	fract = ((m << (EXPONENT_SIZE_BITS + IMAGINARY_BIT_PRESENT + 1)) & representationMask()) << LEFT_SHIFT_BITS;
 	CalcFractional(fractional, fract, e, 0);
 	bigIntFromInt(integer, 0);
 }
 
-void unpackAverage(BigInt* integer, BigInt* fractional, uint32_t e, uint64_t m)
+void unpackAverage(BigInt* integer, BigInt* fractional, uint32_t e, double_bit_t m)
 {
-	uint64_t fract;
+	double_bit_t fract;
 
-	m |= 0x0010000000000000;
-	bigIntFromInt(integer, m >> (52 - e));
-	fract = m << (12 + e);
+	m = addImaginaryBit(m);
+	bigIntFromInt(integer, m >> (MANTISS_SIZE_BITS - IMAGINARY_BIT_PRESENT - e));
+	fract = ((m << (EXPONENT_SIZE_BITS + IMAGINARY_BIT_PRESENT + 1 + e)) & representationMask()) << LEFT_SHIFT_BITS;
 	CalcFractional(fractional, fract, 0, 0);
 }
 
-void unpackHuge(BigInt* integer, BigInt* fractional, uint32_t e, uint64_t m)
+void unpackHuge(BigInt* integer, BigInt* fractional, uint32_t e, double_bit_t m)
 {
 	BigInt mantiss;
 	BigInt pow;
 
 	(void)fractional;
-	m |= 0x0010000000000000;
+	m = addImaginaryBit(m);
 	bigIntFromInt(&mantiss, m);
-	nPowY(&pow, 2, e - 52);
+	nPowY(&pow, 2, e - MANTISS_SIZE_BITS + IMAGINARY_BIT_PRESENT);
 	bigIntMultiplyBig(integer, &pow, &mantiss);
 }

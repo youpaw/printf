@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "Utils.h"
+#include "DoubleRepresentation.h"
 
 size_t myMax(size_t a, size_t b)
 {
@@ -22,7 +23,7 @@ int toInt(char ch)
 	return ch - '0';
 }
 
-int bitWidth(uint64_t bits)
+int bitWidth(double_bit_t bits)
 {
 	int result;
 
@@ -37,6 +38,6 @@ int bitWidth(uint64_t bits)
 
 void strShiftLeft(char* str)
 {
-	while (*str == *(str + 1))
+	while (*str = *(str + 1))
 		++str;
 }
