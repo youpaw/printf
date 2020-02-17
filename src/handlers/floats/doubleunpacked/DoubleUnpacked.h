@@ -5,6 +5,8 @@
 
 # define DOUBLE_INF 1
 # define DOUBLE_NAN 2
+# define DOUBLE_NAN_SIG 3
+# define DOUBLE_NAN_IND 4
 
 typedef struct
 {

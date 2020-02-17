@@ -20,15 +20,28 @@ char* correctTotalWidth(char* str, int totalWidth)
 	return newStr;
 }
 
+const char* special2text(int special)
+{
+    if(special == DOUBLE_NAN)
+        return "nan";
+    if(special == DOUBLE_NAN_SIG)
+        return "nan(sig)";
+    if(special == DOUBLE_NAN_IND)
+        return "nan(ind)";
+    if(special == DOUBLE_INF)
+        return "nan(inf)";
+}
+
+
 char* printDoubleUnpacked(const DoubleUnpacked* du, int totalWidth, int fracWidth)
 {
 	char* str;
 
 	if (du->special == DOUBLE_NAN || du->special == DOUBLE_INF)
 	{
-		str = strCreate(3 + du->sign);
+		str = strCreate(20);
 		str[0] = '-';
-		strCopy(str + du->sign, (du->special == DOUBLE_NAN) ? "nan" : "inf");
+		strCopy( str + du->sign, special2text(du->special) );
 	}
 	else
 		str = printDoubleUnpackedNormal(du, fracWidth);

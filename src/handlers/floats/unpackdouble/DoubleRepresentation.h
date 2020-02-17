@@ -34,5 +34,12 @@ double_bit_t addImaginaryBit(double_bit_t d);
 int sign(double_bit_t d);
 double_bit_t getRepresentation(long double d);
 double_bit_t representationMask();
+int isZero(double_bit_t d);
+int isDenormal(double_bit_t d);
+int isInf(double_bit_t d);
+int isNanSig(double_bit_t d);
+int isInd(double_bit_t d);
+int isNan(double_bit_t d);
+int isNormal(double_bit_t d);
 
 #endif //FT_PRINTF_DOUBLEREPRESENTATION_H

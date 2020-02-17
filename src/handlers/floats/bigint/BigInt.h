@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "DoubleRepresentation.h"
 
-# define BIGINT_SIZE 200
+# define BIGINT_SIZE 2000
 # define BIGINT_BASE (1000*1000*1000)
 
 typedef struct
