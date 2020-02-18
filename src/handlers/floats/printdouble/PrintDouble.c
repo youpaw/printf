@@ -3,7 +3,7 @@
 #include "DoubleUnpacked.h"
 #include "UnpackDouble.h"
 
-char* correctTotalWidth(char* str, int totalWidth)
+char* correctTotalWidth(char* str, int totalWidth, int leftAlign)
 {
 	int size;
 	char* newStr;
@@ -14,7 +14,13 @@ char* correctTotalWidth(char* str, int totalWidth)
 
 	newStr = strCreate(totalWidth);
 	strFill(newStr, totalWidth, ' ');
-	strCopy(newStr + totalWidth - size, str);
+	if(!leftAlign)
+        strCopy(newStr + totalWidth - size, str);
+	else
+	{
+        strCopy(newStr, str);
+        newStr[size] = ' ';
+    }
 	free(str);
 
 	return newStr;
@@ -33,7 +39,7 @@ const char* special2text(int special)
 }
 
 
-char* printDoubleUnpacked(const DoubleUnpacked* du, int totalWidth, int fracWidth)
+char* printDoubleUnpacked(const DoubleUnpacked* du, int totalWidth, int fracWidth, int leftAlign)
 {
 	char* str;
 
@@ -46,14 +52,14 @@ char* printDoubleUnpacked(const DoubleUnpacked* du, int totalWidth, int fracWidt
 	else
 		str = printDoubleUnpackedNormal(du, fracWidth);
 
-	str = correctTotalWidth(str, totalWidth);
+	str = correctTotalWidth(str, totalWidth, leftAlign);
 	return str;
 }
 
-char* printDouble(long double d, int totalWidth, int fractionalWidth)
+char* printDouble(long double d, int totalWidth, int fractionalWidth, int leftAlign)
 {
 	DoubleUnpacked du;
 
 	du = unpackDouble(d);
-	return printDoubleUnpacked(&du, totalWidth, fractionalWidth);
+	return printDoubleUnpacked(&du, totalWidth, fractionalWidth, leftAlign);
 }

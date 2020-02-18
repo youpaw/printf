@@ -77,7 +77,12 @@ char* printDoubleUnpackedNormal(const DoubleUnpacked* du, int fracWidth)
 	char* dbl;
 
 	integ = printInteger(du);
+
+	if(fracWidth == 0)
+	    return integ;
+
 	frac = printFractional(du, fracWidth);
+
 	dblHalf = strCat(integ, ".");
 	dbl = strCat(dblHalf, frac);
 

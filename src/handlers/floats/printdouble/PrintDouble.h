@@ -3,6 +3,6 @@
 
 #include "DoubleUnpacked.h"
 
-char* printDouble(long double d, int totalWidth, int fractionalWidth);
+char* printDouble(long double d, int totalWidth, int fractionalWidth, int leftAlign);
 
 #endif

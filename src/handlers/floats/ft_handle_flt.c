@@ -4,9 +4,15 @@
 ssize_t		ft_handle_flt(t_params *params, va_list args)
 {
 	char *res;
+	long double val;
 
-	res = printDouble(va_arg(args, long double), \
+    if(params->type == 'f' && params->size == 0)
+        val = va_arg(args, double);
+    if(params->type == 'f' && params->size == 'L')
+        val = va_arg(args, long double);
+
+	res = printDouble(val, \
 	params->width < 0 ? 0 : params->width, \
-	params->rigor < 0 ? 6 : params->rigor);
+	params->rigor < 0 ? 6 : params->rigor, params->flags[0]);
 	return (ft_util_print(&res));
 }
