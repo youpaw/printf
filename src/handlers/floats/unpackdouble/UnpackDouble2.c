@@ -46,7 +46,7 @@ void unpackAverage(BigInt* integer, BigInt* fractional, uint32_t e, double_bit_t
 
 	m = addImaginaryBit(m);
 	bigIntFromInt(integer, m >> (MANTISS_SIZE_BITS - IMAGINARY_BIT_PRESENT - e));
-	fract = ((m << (EXPONENT_SIZE_BITS + IMAGINARY_BIT_PRESENT + 1 + e)) & representationMask()) << LEFT_SHIFT_BITS;
+ 	fract = ((m << (EXPONENT_SIZE_BITS + IMAGINARY_BIT_PRESENT + 1 + e)) & representationMask()) << LEFT_SHIFT_BITS;
 	CalcFractional(fractional, fract, 0, 0);
 }
 

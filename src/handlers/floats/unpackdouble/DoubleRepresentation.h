@@ -14,7 +14,7 @@
     #define IMAGINARY_BIT_PRESENT 1
     #define UNDERLYING_TYPE_SIZE 128
     #define DOUBLE_SIZE 80
-    #define LEFT_SHIFT_BITS UNDERLYING_TYPE_SIZE - DOUBLE_SIZE
+    #define LEFT_SHIFT_BITS (UNDERLYING_TYPE_SIZE - DOUBLE_SIZE)
     typedef unsigned __int128 double_bit_t;
 #else // 64-bit double
     #define EXPONENT_SIZE_BITS 11

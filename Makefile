@@ -53,7 +53,7 @@ SRC		:=	ft_get_params.c				\
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -DDOUBLE_EXTENDED=1
 
 NAME	:= libftprintf.a
 

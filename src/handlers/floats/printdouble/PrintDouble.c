@@ -36,6 +36,7 @@ const char* special2text(int special)
         return "nan(ind)";
     if(special == DOUBLE_INF)
         return "nan(inf)";
+    return ("Error");
 }
 
 
