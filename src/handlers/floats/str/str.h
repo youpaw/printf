@@ -1,10 +1,22 @@
-#ifndef __STR_H__
-#define __STR_H__
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mapryl <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/20 15:43:34 by mapryl            #+#    #+#             */
+/*   Updated: 2020/02/20 15:44:22 by mapryl           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char* strCreate(int size);
-void strFill(char* str, int size, char ch);
-int strLen(const char* str);
-void strCopy(char* dst, const char* src);
-char* strCat(const char* str1, const char* str2);
+#ifndef STR_H
+# define STR_H
+
+char	*str_create(int size);
+void	str_fill(char *str, int size, char ch);
+int		str_len(const char *str);
+void	str_copy(char *dst, const char *src);
+char	*str_cat(const char *str1, const char *str2);
 
 #endif

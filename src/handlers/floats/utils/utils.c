@@ -1,31 +1,42 @@
-#include <stdint.h>
-#include "Utils.h"
-#include "DoubleRepresentation.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mapryl <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/20 16:25:54 by mapryl            #+#    #+#             */
+/*   Updated: 2020/02/20 16:27:13 by mapryl           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t myMax(size_t a, size_t b)
+#include <stdint.h>
+#include "utils.h"
+#include "double_representation.h"
+
+size_t	my_max(size_t a, size_t b)
 {
-	return (a > b) ? a : b;
+	return ((a > b) ? a : b);
 }
 
-int intDecimalSize(int i)
+int		int_decimal_size(int i)
 {
-	int size;
+	int		size;
 
 	size = 1;
 	while (i /= 10)
 		++size;
-
-	return size;
+	return (size);
 }
 
-int toInt(char ch)
+int		to_int(char ch)
 {
-	return ch - '0';
+	return (ch - '0');
 }
 
-int bitWidth(double_bit_t bits)
+int		bit_width(t_double_bit bits)
 {
-	int result;
+	int		result;
 
 	result = 0;
 	while (bits)
@@ -33,10 +44,10 @@ int bitWidth(double_bit_t bits)
 		++result;
 		bits <<= 1;
 	}
-	return result;
+	return (result);
 }
 
-void strShiftLeft(char* str)
+void	str_shift_left(char *str)
 {
 	while ((*str = *(str + 1)))
 		++str;
