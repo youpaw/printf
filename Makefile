@@ -22,33 +22,36 @@ INC_DIR := -I includes                             \
 OBJ_DIR := ./obj
 
 SRC		:=	ft_get_params.c				\
-            ft_printf.c					\
-            handlers/ft_handle_chr.c	\
-            handlers/ft_handle_hex.c	\
-            handlers/ft_handle_int.c	\
-            handlers/ft_handle_nul.c	\
-            handlers/ft_handle_oct.c	\
-            handlers/ft_handle_ptr.c	\
-            handlers/ft_handle_str.c	\
-            handlers/ft_handle_uns.c	\
-            utils/ft_util_handle.c		\
-            utils/ft_util_hexpref.c		\
-            utils/ft_util_print.c		\
-            utils/ft_util_rigor.c		\
-            utils/ft_util_sign.c		\
-            utils/ft_util_size.c		\
-            utils/ft_util_width.c       \
-            handlers/floats/bigint/BigIntArithmetics.c              \
-            handlers/floats/bigint/BigIntHelper.c                   \
-            handlers/floats/bigint/BigIntOperatoins.c               \
-            handlers/floats/bigint/BigIntPrint.c                    \
-            handlers/floats/doubleunpacked/PrintDoubleUnpacked.c    \
-            handlers/floats/printdouble/PrintDouble.c               \
-            handlers/floats/str/str.c                               \
-            handlers/floats/unpackdouble/UnpackDouble1.c            \
-            handlers/floats/unpackdouble/UnpackDouble2.c            \
-            handlers/floats/utils/utils.c                           \
-            handlers/floats/ft_handle_flt.c
+			ft_printf.c					\
+			handlers/ft_handle_chr.c	\
+			handlers/ft_handle_hex.c	\
+			handlers/ft_handle_int.c	\
+			handlers/ft_handle_nul.c	\
+			handlers/ft_handle_oct.c	\
+			handlers/ft_handle_ptr.c	\
+			handlers/ft_handle_str.c	\
+			handlers/ft_handle_uns.c	\
+			utils/ft_util_handle.c		\
+			utils/ft_util_hexpref.c		\
+			utils/ft_util_print.c		\
+			utils/ft_util_rigor.c		\
+			utils/ft_util_sign.c		\
+			utils/ft_util_size.c		\
+			utils/ft_util_width.c		\
+			handlers/floats/bigint/big_int_arithmetics.c			\
+			handlers/floats/bigint/big_int_helper.c					\
+			handlers/floats/bigint/big_int_operatoins.c				\
+			handlers/floats/bigint/big_int_print.c					\
+			handlers/floats/doubleunpacked/print_double_unpacked.c	\
+			handlers/floats/printdouble/print_double.c				\
+			handlers/floats/str/str.c								\
+			handlers/floats/unpackdouble/unpack_double1.c			\
+			handlers/floats/unpackdouble/unpack_double2.c			\
+			handlers/floats/unpackdouble/double_classifier1.c		\
+			handlers/floats/unpackdouble/double_classifier1.c		\
+			handlers/floats/unpackdouble/double_representation.c	\
+			handlers/floats/utils/utils.c							\
+			handlers/floats/ft_handle_flt.c
 
 
 OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

@@ -42,7 +42,7 @@ int		str_len(const char *str)
 
 void	str_copy(char *dst, const char *src)
 {
-	while (*dst = *src)
+	while ((*dst = *src))
 	{
 		++dst;
 		++src;
