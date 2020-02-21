@@ -6,7 +6,7 @@
 /*   By: mapryl <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:53:17 by mapryl            #+#    #+#             */
-/*   Updated: 2020/02/20 17:01:01 by mapryl           ###   ########.fr       */
+/*   Updated: 2020/02/21 15:53:21 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct
 {
-    uint64_t ui[2];
-}                       t_double_bit;
+	uint64_t			ui[2];
+}	t_double_bit;
 
 typedef union			u_double_view
 {
@@ -34,7 +34,7 @@ typedef union			u_double_view
 	t_double_bit		view;
 }						t_double_view;
 
-uint64_t			    mantiss(t_double_bit d);
+uint64_t				mantiss(t_double_bit d);
 uint32_t				exponent(t_double_bit d);
 int						msb(uint64_t d);
 int						sign(t_double_bit d);

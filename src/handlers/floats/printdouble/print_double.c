@@ -6,7 +6,7 @@
 /*   By: mapryl <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 15:33:33 by mapryl            #+#    #+#             */
-/*   Updated: 2020/02/20 15:34:20 by mapryl           ###   ########.fr       */
+/*   Updated: 2020/02/21 15:41:03 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,20 @@ const char	*special2text(int special, int upper_case)
 	return ("Error");
 }
 
+/*
+** готовим строку к печати
+** минус затираем, если флаг du-> sign == 0
+*/
+
 char		*print_double_unpacked(const t_double_unpacked *du,
-        t_double_options *options)
+		t_double_options *options)
 {
 	char	*str;
 
 	if (du->special != DOUBLE_NORMAL)
 	{
 		str = str_create(20);
-		str[0] = '-'; // затрем этот минус если флаг du->sign == 0, если он равен 1, то минус остаётся
+		str[0] = '-';
 		str_copy(str + du->sign, special2text(du->special, options->big_f));
 	}
 	else
@@ -72,5 +77,5 @@ char		*print_double(long double d, t_double_options *options)
 	t_double_unpacked	du;
 
 	du = unpack_double(d);
-	return ( print_double_unpacked(&du, options) );
+	return (print_double_unpacked(&du, options));
 }

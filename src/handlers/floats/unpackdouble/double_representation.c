@@ -6,13 +6,13 @@
 /*   By: mapryl <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 15:57:12 by mapryl            #+#    #+#             */
-/*   Updated: 2020/02/20 16:09:10 by mapryl           ###   ########.fr       */
+/*   Updated: 2020/02/21 15:44:53 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_representation.h"
 
-uint64_t	mantiss(t_double_bit d)
+uint64_t		mantiss(t_double_bit d)
 {
 	return (d.ui[0]);
 }
@@ -28,15 +28,16 @@ int				msb(uint64_t d)
 }
 
 /*
- получаем тип с битами как в заданном дабале, для последуюущих операций над битами
- */
+** получаем тип с битами как в заданном double
+** для последуюущих операций над битами
+*/
+
 t_double_bit	get_representation(long double d)
 {
-    t_double_view dw;
+	t_double_view dw;
 
-    dw.view.ui[0] = 0;
+	dw.view.ui[0] = 0;
 	dw.view.ui[1] = 0;
-
 	dw.ld = d;
 	return (dw.view);
 }

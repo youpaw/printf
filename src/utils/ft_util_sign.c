@@ -6,15 +6,15 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:40:39 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/02 22:40:39 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:50:37 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void 	ft_util_sign(char **res, const short *flags)
+void	ft_util_sign(char **res, const short *flags)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (!res || !*res)
 		return ;

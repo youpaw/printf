@@ -6,20 +6,19 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:36:30 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/03 21:29:10 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:50:15 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_handlers.h"
 
-char        to_lower(char ch)
+char		to_lower(char ch)
 {
-    if(ch > 64 && ch < 91)
-        return (ch + 32);
-    else
-        return (ch);
+	if (ch > 64 && ch < 91)
+		return (ch + 32);
+	else
+		return (ch);
 }
-
 
 ssize_t		ft_util_handle(char **format, va_list args)
 {
@@ -30,7 +29,7 @@ ssize_t		ft_util_handle(char **format, va_list args)
 	i = 0;
 	if (!(params = ft_get_params(format, args)))
 		return (0);
-	while(i < N_TYPES)
+	while (i < N_TYPES)
 	{
 		if (handlers[i].type == to_lower(params->type))
 		{

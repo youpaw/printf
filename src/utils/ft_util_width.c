@@ -6,7 +6,7 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:42:05 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/02 22:42:05 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:50:51 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_util_width(char **res, int width, short align)
 {
 	int		len;
 	char	*tmp;
-	char 	*fmt;
+	char	*fmt;
 
 	if (!res || !*res || (len = ft_strlen(*res)) >= width)
 		return ;

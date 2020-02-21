@@ -6,7 +6,7 @@
 /*   By: mapryl <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 16:23:33 by mapryl            #+#    #+#             */
-/*   Updated: 2020/02/20 16:58:17 by mapryl           ###   ########.fr       */
+/*   Updated: 2020/02/21 15:48:35 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,18 @@ void	unpack_below_one(t_big_int *integer, t_big_int *fractional,
 	big_int_from_int(integer, 0);
 }
 
+/*
+** в этой версии double (расширенная - 80 бит) старший бит в мантиссе всегда
+** относится к целой части
+*/
+
 void	unpack_average(t_big_int *integer, t_big_int *fractional,
 		uint32_t e, uint64_t m)
 {
 	uint64_t	fract;
 
 	big_int_from_int(integer, m >> (63 - e));
-	fract = m << (1 + e); // в этой версии дабла (расширенная - 80бит) самый старший бит в мантиссе всегда отностится к целой части
+	fract = m << (1 + e);
 	calc_fractional(fractional, fract, 0, 0);
 }
 

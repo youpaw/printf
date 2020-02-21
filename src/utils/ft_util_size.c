@@ -6,7 +6,7 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:41:26 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/05 19:48:18 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:51:34 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ size_t	ft_util_usize(va_list args, char size)
 	else if (size == 't')
 		value = va_arg(args, size_t);
 	else if (size == 'L')
-		value = va_arg(args,u_int64_t);
+		value = va_arg(args, uint64_t);
 	else
 		value = va_arg(args, unsigned int);
 	return (value);

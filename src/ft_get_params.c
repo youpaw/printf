@@ -6,7 +6,7 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 19:23:32 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/07 18:05:12 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 15:37:43 by mapryl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int		ft_get_width(char **params, va_list args)
 	return (ret);
 }
 
-static int 		ft_get_rigor(char **params, va_list args)
+static int		ft_get_rigor(char **params, va_list args)
 {
 	int ret;
 
@@ -86,7 +86,8 @@ static char		ft_get_size(char **params)
 
 	sflags = "lhjztL";
 	while (*sflags)
-	{	if (**params == *sflags)
+	{
+		if (**params == *sflags)
 		{
 			res = *(*params)++;
 			if (**params == res)
@@ -94,7 +95,7 @@ static char		ft_get_size(char **params)
 				res *= -1;
 				(*params)++;
 			}
-			return (res) ;
+			return (res);
 		}
 		sflags++;
 	}
