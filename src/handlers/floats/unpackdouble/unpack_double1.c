@@ -29,18 +29,17 @@ t_double_unpacked	assign_double_unpacked(int sign, t_big_int *integer,
 }
 
 void				unpack_denormal(t_big_int *integer, t_big_int *fractional,
-		t_double_bit mantiss)
+		uint64_t mantiss)
 {
-	t_double_bit fract;
+	uint64_t fract;
 
 	big_int_from_int(integer, 0);
-	fract = ((mantiss << (EXPONENT_SIZE_BITS + 2)) &
-			representation_mask()) << LEFT_SHIFT_BITS;
+	fract = mantiss << 1;
 	calc_fractional(fractional, fract, EXPONENT_BIAS - 1, 1);
 }
 
 void				unpack_normal(t_big_int *integer, t_big_int *fractional,
-		t_double_bit representation, t_double_bit m)
+		t_double_bit representation, uint64_t m)
 {
 	uint32_t e;
 
@@ -62,7 +61,7 @@ int					classify(t_double_bit rep, t_big_int *integer,
 {
 	int		class;
 
-	class = 0;
+	class = DOUBLE_NORMAL;
 	if (is_zero(rep))
 	{
 		big_int_from_int(integer, 0);

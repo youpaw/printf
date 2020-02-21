@@ -5,7 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(includes)
 include_directories(libft)
-include_directories(pft-master-polniy/src)
 include_directories(src/handlers/floats/bigint)
 include_directories(src/handlers/floats/doubleunpacked)
 include_directories(src/handlers/floats/printdouble)
@@ -84,20 +83,6 @@ add_executable(printf
         libft/ft_toupper.c
         libft/get_next_line.c
         libft/libft.h
-        pft-master-polniy/configurations/42fc/unit_tests.42fc.c
-        pft-master-polniy/src/help.c
-        pft-master-polniy/src/help.h
-        pft-master-polniy/src/help_conf.c
-        pft-master-polniy/src/history.c
-        pft-master-polniy/src/main.c
-        pft-master-polniy/src/options.c
-        pft-master-polniy/src/print.c
-        pft-master-polniy/src/show_disabled_postprocess.c
-        pft-master-polniy/src/test.c
-        pft-master-polniy/src/test.h
-        pft-master-polniy/src/unit_tests_indexed.c
-        pft-master-polniy/src/utils.c
-        pft-master-polniy/unit_tests.c
         src/handlers/floats/bigint/big_int.h
         src/handlers/floats/bigint/big_int_arithmetics.c
         src/handlers/floats/bigint/big_int_helper.c
@@ -136,4 +121,5 @@ add_executable(printf
         src/utils/ft_util_size.c
         src/utils/ft_util_width.c
         src/ft_get_params.c
-        src/ft_printf.c)
+        src/ft_printf.c
+        main.c)

@@ -19,7 +19,7 @@ int		big_int_decimal_size(const t_big_int *bi)
 	return (int_decimal_size(bi->digits[bi->size - 1]) + 9 * (bi->size - 1));
 }
 
-void	big_int_from_int(t_big_int *a, t_double_bit b)
+void	big_int_from_int(t_big_int *a, uint64_t b)
 {
 	int	digit;
 

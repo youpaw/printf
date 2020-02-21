@@ -34,7 +34,7 @@ int		to_int(char ch)
 	return (ch - '0');
 }
 
-int		bit_width(t_double_bit bits)
+int		bit_width(uint64_t bits)
 {
 	int		result;
 

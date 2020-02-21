@@ -14,6 +14,7 @@
 #include "str.h"
 #include "double_unpacked.h"
 #include "unpack_double.h"
+#include "print_double.h"
 
 char		*correct_total_width(char *str, int total_width, int left_align)
 {
@@ -36,42 +37,40 @@ char		*correct_total_width(char *str, int total_width, int left_align)
 	return (new_str);
 }
 
-const char	*special2text(int special)
+const char	*special2text(int special, int upper_case)
 {
 	if (special == DOUBLE_NAN)
-		return ("nan");
+		return (upper_case ? "NAN" : "nan");
 	if (special == DOUBLE_NAN_SIG)
-		return ("nan(sig)");
+		return (upper_case ? "NAN(SIG)" : "nan(sig)");
 	if (special == DOUBLE_NAN_IND)
-		return ("nan(ind)");
+		return (upper_case ? "NAN" : "nan");
 	if (special == DOUBLE_INF)
-		return ("nan(inf)");
+		return (upper_case ? "INF" : "inf");
 	return ("Error");
 }
 
 char		*print_double_unpacked(const t_double_unpacked *du,
-		int total_width, int frac_width, int left_align)
+        t_double_options *options)
 {
 	char	*str;
 
-	if (du->special == DOUBLE_NAN || du->special == DOUBLE_INF)
+	if (du->special != DOUBLE_NORMAL)
 	{
 		str = str_create(20);
-		str[0] = '-';
-		str_copy(str + du->sign, special2text(du->special));
+		str[0] = '-'; // затрем этот минус если флаг du->sign == 0, если он равен 1, то минус остаётся
+		str_copy(str + du->sign, special2text(du->special, options->big_f));
 	}
 	else
-		str = print_double_unpacked_normal(du, frac_width);
-	str = correct_total_width(str, total_width, left_align);
+		str = print_double_unpacked_normal(du, options->fractional_width);
+	str = correct_total_width(str, options->total_width, options->left_align);
 	return (str);
 }
 
-char		*print_double(long double d, int total_width,
-		int fractional_width, int left_align)
+char		*print_double(long double d, t_double_options *options)
 {
 	t_double_unpacked	du;
 
 	du = unpack_double(d);
-	return (print_double_unpacked(&du, total_width, fractional_width,
-				left_align));
+	return ( print_double_unpacked(&du, options) );
 }

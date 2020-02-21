@@ -20,7 +20,7 @@
 size_t	my_max(size_t a, size_t b);
 int		int_decimal_size(int i);
 int		to_int(char ch);
-int		bit_width(t_double_bit bits);
+int		bit_width(uint64_t bits);
 void	str_shift_left(char *str);
 
 #endif

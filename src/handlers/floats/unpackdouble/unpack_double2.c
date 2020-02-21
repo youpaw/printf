@@ -14,7 +14,7 @@
 #include "utils.h"
 #include "double_representation.h"
 
-void	calc_fractional(t_big_int *fractional, t_double_bit fract,
+void	calc_fractional(t_big_int *fractional, uint64_t fract,
 		int initial_pow, int denormal)
 {
 	int			width;
@@ -43,38 +43,33 @@ void	calc_fractional(t_big_int *fractional, t_double_bit fract,
 }
 
 void	unpack_below_one(t_big_int *integer, t_big_int *fractional,
-		uint32_t e, t_double_bit m)
+		uint32_t e, uint64_t m)
 {
-	t_double_bit	fract;
+	uint64_t	fract;
 
 	e = EXPONENT_BIAS - e;
-	fract = ((m << (EXPONENT_SIZE_BITS + IMAGINARY_BIT_PRESENT + 1)) &
-			representation_mask()) << LEFT_SHIFT_BITS;
+	fract = m << 1;
 	calc_fractional(fractional, fract, e, 0);
 	big_int_from_int(integer, 0);
 }
 
 void	unpack_average(t_big_int *integer, t_big_int *fractional,
-		uint32_t e, t_double_bit m)
+		uint32_t e, uint64_t m)
 {
-	t_double_bit	fract;
+	uint64_t	fract;
 
-	m = add_imaginary_bit(m);
-	big_int_from_int(integer, m >> (MANTISS_SIZE_BITS -
-				IMAGINARY_BIT_PRESENT - e));
-	fract = ((m << (EXPONENT_SIZE_BITS + IMAGINARY_BIT_PRESENT + 1 + e)) &
-			representation_mask()) << LEFT_SHIFT_BITS;
+	big_int_from_int(integer, m >> (63 - e));
+	fract = m << (1 + e); // в этой версии дабла (расширенная - 80бит) самый старший бит в мантиссе всегда отностится к целой части
 	calc_fractional(fractional, fract, 0, 0);
 }
 
 void	unpack_huge(t_big_int *integer, t_big_int *fractional,
-		uint32_t e, t_double_bit m)
+		uint32_t e, uint64_t m)
 {
 	t_big_int	mantiss;
 	t_big_int	pow;
 
 	(void)fractional;
-	m = add_imaginary_bit(m);
 	big_int_from_int(&mantiss, m);
 	n_pow_y(&pow, 2, e - MANTISS_SIZE_BITS + IMAGINARY_BIT_PRESENT);
 	big_int_multiply_big(integer, &pow, &mantiss);

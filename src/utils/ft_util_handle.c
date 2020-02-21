@@ -12,6 +12,15 @@
 
 #include "ft_handlers.h"
 
+char        to_lower(char ch)
+{
+    if(ch > 64 && ch < 91)
+        return (ch + 32);
+    else
+        return (ch);
+}
+
+
 ssize_t		ft_util_handle(char **format, va_list args)
 {
 	t_params	*params;
@@ -23,7 +32,7 @@ ssize_t		ft_util_handle(char **format, va_list args)
 		return (0);
 	while(i < N_TYPES)
 	{
-		if (handlers[i].type == params->type)
+		if (handlers[i].type == to_lower(params->type))
 		{
 			ret = handlers[i].handler(params, args);
 			free(params);

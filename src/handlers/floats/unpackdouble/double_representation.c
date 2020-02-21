@@ -12,59 +12,36 @@
 
 #include "double_representation.h"
 
-t_double_bit	mantiss(t_double_bit d)
+uint64_t	mantiss(t_double_bit d)
 {
-	t_double_bit	v;
-	t_double_bit	vv;
-
-	v = 0x0000FFFFFFFFFFFF;
-	vv = (v << 16) | 0xFFFFFFFFFFFFFFFF;
-	return (d & vv);
+	return (d.ui[0]);
 }
 
 uint32_t		exponent(t_double_bit d)
 {
-	t_double_bit	v;
-	t_double_bit	vv;
-
-	v = 0x7FFF000000000000;
-	vv = v << 16;
-	return ((int32_t)((d & vv) >> MANTISS_SIZE_BITS));
+	return ((int32_t)(d.ui[1] & 0x7FFF));
 }
 
-int				msb(t_double_bit d)
+int				msb(uint64_t d)
 {
-	return (d >> (UNDERLYING_TYPE_SIZE - 1));
+	return (d >> 63);
 }
 
 /*
-** no imaginary bit in extended precision
-*/
-
-t_double_bit	add_imaginary_bit(t_double_bit d)
-{
-	return (d);
-}
-
-t_double_bit	representation_mask(void)
-{
-	t_double_bit	v;
-	t_double_bit	vv;
-
-	v = 0xFFFFFFFFFFFFFFFF;
-	vv = (v << 16) | 0xFFFF;
-	return (vv);
-}
-
+ получаем тип с битами как в заданном дабале, для последуюущих операций над битами
+ */
 t_double_bit	get_representation(long double d)
 {
     t_double_view dw;
-	
+
+    dw.view.ui[0] = 0;
+	dw.view.ui[1] = 0;
+
 	dw.ld = d;
 	return (dw.view);
 }
 
 int				sign(t_double_bit d)
 {
-	return (d >> (EXPONENT_SIZE_BITS + MANTISS_SIZE_BITS));
+	return (d.ui[1] >> 15);
 }

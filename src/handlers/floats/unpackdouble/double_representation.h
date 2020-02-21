@@ -23,20 +23,22 @@
 # define DOUBLE_SIZE 80
 # define LEFT_SHIFT_BITS 48
 
-typedef unsigned int	t_double_bit;
+typedef struct
+{
+    uint64_t ui[2];
+}                       t_double_bit;
+
 typedef union			u_double_view
 {
 	long double			ld;
 	t_double_bit		view;
 }						t_double_view;
 
-t_double_bit			mantiss(t_double_bit d);
+uint64_t			    mantiss(t_double_bit d);
 uint32_t				exponent(t_double_bit d);
-int						msb(t_double_bit d);
-t_double_bit			add_imaginary_bit(t_double_bit d);
+int						msb(uint64_t d);
 int						sign(t_double_bit d);
 t_double_bit			get_representation(long double d);
-t_double_bit			representation_mask();
 int						is_zero(t_double_bit d);
 int						is_denormal(t_double_bit d);
 int						is_inf(t_double_bit d);

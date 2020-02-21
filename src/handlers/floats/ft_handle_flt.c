@@ -17,13 +17,19 @@ ssize_t		ft_handle_flt(t_params *params, va_list args)
 {
 	char		*res;
 	long double	val;
+	t_double_options  options;
 
 	val = 0;
-	if (params->type == 'f' && params->size == 0)
+	if (params->size == 0)
 		val = va_arg(args, double);
-	if (params->type == 'f' && params->size == 'L')
+	if (params->size == 'L')
 		val = va_arg(args, long double);
-	res = print_double(val, params->width < 0 ? 0 : params->width,
-			params->rigor < 0 ? 6 : params->rigor, params->flags[0]);
+
+	options.total_width = params->width < 0 ? 0 : params->width;
+	options.fractional_width = params->rigor < 0 ? 6 : params->rigor;
+	options.left_align = params->flags[0];
+	options.big_f = params->type == 'F';
+
+	res = print_double(val, &options);
 	return (ft_util_print(&res));
 }

@@ -42,6 +42,6 @@ int			print_to_string(char *buff, int buff_size, int width, int i);
 void		big_int_print(char *buff, int buff_size, const t_big_int
 		*big_int, int is_frac);
 int			big_int_decimal_size(const t_big_int *bi);
-void		big_int_from_int(t_big_int *a, t_double_bit b);
+void		big_int_from_int(t_big_int *a, uint64_t b);
 
 #endif

@@ -16,13 +16,13 @@
 # include "double_unpacked.h"
 
 t_double_unpacked	unpack_double(long double d);
-void				calc_fractional(t_big_int *fractional, t_double_bit fract,
+void				calc_fractional(t_big_int *fractional, uint64_t fract,
 		int initial_pow, int denormal);
 void				unpack_below_one(t_big_int *integer,
-		t_big_int *fractional, uint32_t e, t_double_bit m);
+		t_big_int *fractional, uint32_t e, uint64_t m);
 void				unpack_average(t_big_int *integer, t_big_int *fractional,
-		uint32_t e, t_double_bit m);
+		uint32_t e, uint64_t m);
 void				unpack_huge(t_big_int *integer, t_big_int *fractional,
-		uint32_t e, t_double_bit m);
+		uint32_t e, uint64_t m);
 
 #endif

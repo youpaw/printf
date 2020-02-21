@@ -15,7 +15,14 @@
 
 # include "double_unpacked.h"
 
-char	*print_double(long double d, int total_width, int fractional_width,
-		int left_align);
+typedef struct
+{
+    int total_width;
+    int fractional_width;
+    int left_align;
+    int big_f;
+}				t_double_options;
+
+char	*print_double(long double d, t_double_options *options);
 
 #endif
