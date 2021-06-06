@@ -6,7 +6,7 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 19:24:18 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/03 21:29:10 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:39:18 by dbutterw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ ssize_t							ft_handle_flt(t_params *params, va_list args);
 
 ssize_t							ft_handle_nul(t_params *params);
 
-static const t_handlers			handlers[N_TYPES] =
+static const t_handlers			g_handlers[N_TYPES] =
 {
-		{'d', &ft_handle_int},
-		{'i', &ft_handle_int},
-		{'o', &ft_handle_oct},
-		{'u', &ft_handle_uns},
-		{'x', &ft_handle_hex},
-		{'X', &ft_handle_hex},
-		{'c', &ft_handle_chr},
-		{'s', &ft_handle_str},
-		{'p', &ft_handle_ptr},
-		{'f', &ft_handle_flt}
+	{'d', &ft_handle_int},
+	{'i', &ft_handle_int},
+	{'o', &ft_handle_oct},
+	{'u', &ft_handle_uns},
+	{'x', &ft_handle_hex},
+	{'X', &ft_handle_hex},
+	{'c', &ft_handle_chr},
+	{'s', &ft_handle_str},
+	{'p', &ft_handle_ptr},
+	{'f', &ft_handle_flt}
 };
 
 #endif

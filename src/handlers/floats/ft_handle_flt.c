@@ -20,10 +20,10 @@ ssize_t		ft_handle_flt(t_params *params, va_list args)
 	t_double_options	options;
 
 	val = 0;
-	if (params->size == 0)
-		val = va_arg(args, double);
 	if (params->size == 'L')
 		val = va_arg(args, long double);
+	else
+		val = va_arg(args, double);
 	options.total_width = params->width < 0 ? 0 : params->width;
 	options.fractional_width = params->rigor < 0 ? 6 : params->rigor;
 	options.left_align = params->flags[0];

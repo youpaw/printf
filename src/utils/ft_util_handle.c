@@ -6,7 +6,7 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/02 22:36:30 by dbutterw          #+#    #+#             */
-/*   Updated: 2020/02/21 15:50:15 by mapryl           ###   ########.fr       */
+/*   Updated: 2020/02/21 17:40:03 by dbutterw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ ssize_t		ft_util_handle(char **format, va_list args)
 		return (0);
 	while (i < N_TYPES)
 	{
-		if (handlers[i].type == to_lower(params->type))
+		if (g_handlers[i].type == to_lower(params->type))
 		{
-			ret = handlers[i].handler(params, args);
+			ret = g_handlers[i].handler(params, args);
 			free(params);
 			return (ret);
 		}

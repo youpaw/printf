@@ -6,7 +6,7 @@
 /*   By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:12:17 by dbutterw          #+#    #+#             */
-/*   Updated: 2019/10/03 21:29:10 by dbutterw         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:40:45 by dbutterw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 typedef struct	s_params
 {
 	short		flags[N_FLAGS];
-	int 		width;
+	int			width;
 	int			rigor;
-	char 		size;
-	char 		type;
-
+	char		size;
+	char		type;
 }				t_params;
 
 int				ft_printf(char *format, ...);
@@ -44,7 +43,7 @@ void			ft_util_rigor(char **res, t_params *params, int pad);
 
 void			ft_util_width(char **res, int width, short align);
 
-void 			ft_util_sign(char **res, const short *flags);
+void			ft_util_sign(char **res, const short *flags);
 
 void			ft_util_hexpref(char **res, char type);
 

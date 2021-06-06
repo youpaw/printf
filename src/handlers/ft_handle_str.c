@@ -19,7 +19,7 @@ ssize_t		ft_handle_str(t_params *params, va_list args)
 
 	if (!(res = va_arg(args, char*)))
 		res = "(null)";
-	len = FMIN(ft_strlen(res), (size_t)params->rigor);
+	len = ft_min(ft_strlen(res), (size_t)params->rigor);
 	res = ft_strsub(res, 0, len);
 	ft_util_width(&res, params->width, params->flags[0]);
 	return (ft_util_print(&res));
