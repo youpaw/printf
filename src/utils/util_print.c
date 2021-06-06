@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "string/ft_str.h"
 
-ssize_t		ft_util_print(char **res)
+int ft_util_print(char **res)
 {
-	ssize_t ret;
+	int ret;
 
-	ret = ft_putstr(*res);
+	ret = ft_puts(*res);
 	if (*res)
 		free(*res);
 	return (ret);

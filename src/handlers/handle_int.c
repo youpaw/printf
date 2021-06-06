@@ -11,8 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "string/ft_str.h"
+#include "char/ft_char.h"
 
-ssize_t		ft_handle_int(t_params *params, va_list args)
+int		ft_handle_int(t_params *params, va_list args)
 {
 	char	*res;
 

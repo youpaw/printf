@@ -10,14 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_printf.h"
-
-static int	ft_max(int x, int y)
-{
-	if (x < y)
-		return (y);
-	return (x);
-}
+#include "string/ft_str.h"
+#include "memory/ft_mem.h"
+#include "math/ft_math.h"
 
 void		ft_util_rigor(char **res, t_params *params, int pad)
 {
@@ -30,7 +27,7 @@ void		ft_util_rigor(char **res, t_params *params, int pad)
 		*(*res + pad) = 0;
 	if (params->flags[4] && !params->flags[0])
 	{
-		params->rigor = ft_max(params->rigor, params->width) - pad;
+		params->rigor = (int) ft_max(params->rigor, params->width) - pad;
 		params->width = -1;
 	}
 	if ((len = (int)ft_strlen(*res) - pad) >= params->rigor)

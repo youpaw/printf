@@ -11,11 +11,41 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "char/ft_char.h"
+
+static int		handle_format(char **format, va_list args)
+{
+	static const t_handlers	handlers[N_TYPES] =
+	{
+		{'d', &ft_handle_int}, {'i', &ft_handle_int},
+		{'o', &ft_handle_oct}, {'u', &ft_handle_uns},
+		{'x', &ft_handle_hex}, {'X', &ft_handle_hex},
+		{'c', &ft_handle_chr}, {'s', &ft_handle_str},
+		{'p', &ft_handle_ptr}, {'f', &ft_handle_flt}
+	};
+	t_params	params;
+	int			ret;
+	short		i;
+
+	i = 0;
+	ft_get_params(format, &params, args);
+	while (i < N_TYPES)
+	{
+		if (handlers[i].type == ft_tolower(params.type))
+		{
+			ret = handlers[i].handler(&params, args);
+			return (ret);
+		}
+		i++;
+	}
+	ret = ft_handle_nul(&params);
+	return (ret);
+}
 
 int				ft_printf(char *format, ...)
 {
-	va_list args;
-	ssize_t ret;
+	va_list	args;
+	int		ret;
 
 	if (!format)
 		return (0);
@@ -24,7 +54,7 @@ int				ft_printf(char *format, ...)
 	while (*format)
 	{
 		if (*format == '%' && *(++format) != '%')
-			ret += ft_util_handle(&format, args);
+			ret += handle_format(&format, args);
 		else
 		{
 			ft_putchar(*format++);

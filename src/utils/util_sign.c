@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "string/ft_str.h"
 
 void	ft_util_sign(char **res, const short *flags)
 {
@@ -20,7 +21,8 @@ void	ft_util_sign(char **res, const short *flags)
 		return ;
 	if (**res != '-' && (flags[1] || flags[2]))
 	{
-		if ((tmp = ft_strjoin(" ", *res)) && flags[1])
+		tmp = ft_strjoin(" ", *res);
+		if (flags[1])
 			*tmp = '+';
 		free(*res);
 		*res = tmp;

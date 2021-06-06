@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "string/ft_str.h"
 
-ssize_t		ft_handle_nul(t_params *params)
+int		ft_handle_nul(t_params *params)
 {
 	char	*res;
 	int		pad;

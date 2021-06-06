@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "string/ft_str.h"
 
-ssize_t		ft_handle_ptr(t_params *params, va_list args)
+int		ft_handle_ptr(t_params *params, va_list args)
 {
 	char *res;
 

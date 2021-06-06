@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "print_double.h"
 
-ssize_t		ft_handle_flt(t_params *params, va_list args)
+int		ft_handle_flt(t_params *params, va_list args)
 {
 	char				*res;
 	long double			val;

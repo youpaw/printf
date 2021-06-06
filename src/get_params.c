@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "char/ft_char.h"
+#include "num/ft_num.h"
 
 static void		ft_get_flags(short *flags, char **format)
 {
@@ -102,23 +104,20 @@ static char		ft_get_size(char **params)
 	return (0);
 }
 
-t_params		*ft_get_params(char **format, va_list args)
+void ft_get_params(char **format, t_params *params, va_list args)
 {
-	t_params *params;
-
-	if (!(params = (t_params*)malloc(sizeof(t_params))))
-		return (NULL);
 	ft_get_flags(params->flags, format);
-	if ((params->width = ft_get_width(format, args)) < 0)
+	params->width = ft_get_width(format, args);
+	if (params->width < 0)
 	{
 		params->width *= -1;
 		params->flags[0] = 1;
 	}
-	if ((params->rigor = ft_get_rigor(format, args)) >= 0)
+	params->rigor = ft_get_rigor(format, args);
+	if (params->rigor >= 0)
 		params->flags[4] = 0;
 	params->size = ft_get_size(format);
 	params->type = **format;
 	if (**format)
 		(*format)++;
-	return (params);
 }

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "string/ft_str.h"
 
 void	ft_util_hexpref(char **res, char type)
 {

@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <stdlib.h>
+#include "string/ft_str.h"
+#include "memory/ft_mem.h"
 
 void	ft_util_width(char **res, int width, short align)
 {
@@ -18,7 +20,7 @@ void	ft_util_width(char **res, int width, short align)
 	char	*tmp;
 	char	*fmt;
 
-	if (!res || !*res || (len = ft_strlen(*res)) >= width)
+	if (!res || !*res || (len = (int) ft_strlen(*res)) >= width)
 		return ;
 	len = width - len;
 	if ((tmp = ft_strnew(len)))
