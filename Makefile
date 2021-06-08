@@ -30,7 +30,7 @@ OBJS			:= $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 DEPS    		:= $(OBJS:.o=.d)
 
 LIBFT			:= $(LIBFT_DIR)/libft.a
-CFLAGS			:= -MD -MP -Wall -Wextra -Werror
+CFLAGS			:= -MMD -Wall -Wextra -Werror
 NAME			:= libftprintf.a
 
 .PHONY: all lib clean fclean re
