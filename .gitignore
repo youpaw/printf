@@ -1,3 +1,5 @@
 .idea
 main.c
 cmake-build-debug
+obj
+libftprintf.a

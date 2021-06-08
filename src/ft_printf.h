@@ -35,14 +35,6 @@ typedef struct	s_handlers
 	int			(*handler)(t_params*, va_list);
 }				t_handlers;
 
-//typedef struct	s_res_fmt{
-//	size_t		len;
-//	int			zeros;
-//	int 		space;
-//	short 		align;
-//	char		sign;
-//}				t_res_fmt;
-
 int				ft_printf(char *format, ...);
 void			ft_get_params(char **format, t_params *params, va_list args);
 
