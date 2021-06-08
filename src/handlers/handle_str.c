@@ -21,7 +21,10 @@ int		ft_handle_str(t_params *params, va_list args)
 
 	if (!(res = va_arg(args, char*)))
 		res = "(null)";
-	len = ft_min((int64_t)ft_strlen(res), params->rigor);
+	if (params->rigor < 0)
+		len = ft_strlen(res);
+	else
+		len = ft_min((int64_t)ft_strlen(res), params->rigor);
 	res = ft_strsub(res, 0, len);
 	ft_util_width(&res, params->width, params->flags[0]);
 	return (ft_util_print(&res));
