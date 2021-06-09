@@ -13,13 +13,13 @@
 #include "ft_printf.h"
 #include "string/ft_str.h"
 
-int		ft_handle_nul(t_params *params)
+int	ft_handle_nul(t_params *params)
 {
 	char	*res;
 	int		pad;
 
-	if ((res = ft_strnew(1)))
-		res[0] = params->type;
+	res = ft_strnew(1);
+	res[0] = params->type;
 	pad = !(params->type);
 	ft_util_rigor(&res, params, pad);
 	ft_util_width(&res, params->width, params->flags[0]);

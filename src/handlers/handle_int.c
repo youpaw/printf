@@ -14,7 +14,7 @@
 #include "string/ft_str.h"
 #include "char/ft_char.h"
 
-int		ft_handle_int(t_params *params, va_list args)
+int	ft_handle_int(t_params *params, va_list args)
 {
 	char	*res;
 

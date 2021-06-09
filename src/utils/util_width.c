@@ -20,17 +20,17 @@ void	ft_util_width(char **res, int width, short align)
 	char	*tmp;
 	char	*fmt;
 
-	if (!res || !*res || (len = (int) ft_strlen(*res)) >= width)
+	len = (int) ft_strlen(*res);
+	if (len >= width)
 		return ;
 	len = width - len;
-	if ((tmp = ft_strnew(len)))
-		tmp = ft_memset(tmp, ' ', len);
+	tmp = ft_strnew(len);
+	tmp = ft_memset(tmp, ' ', len);
 	if (align)
 		fmt = ft_strjoin(*res, tmp);
 	else
 		fmt = ft_strjoin(tmp, *res);
 	free(*res);
-	if (tmp)
-		free(tmp);
+	free(tmp);
 	*res = fmt;
 }

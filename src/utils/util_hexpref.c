@@ -15,17 +15,10 @@
 
 void	ft_util_hexpref(char **res, char type)
 {
-	char *pref;
-	char *tmp;
+	char	*pref;
+	char	*tmp;
 
-	if (!res || !*res)
-		return ;
-	if (!(pref = ft_strnew(2)))
-	{
-		free(*res);
-		*res = NULL;
-		return ;
-	}
+	pref = ft_strnew(2);
 	pref[0] = '0';
 	pref[1] = type;
 	tmp = ft_strjoin(pref, *res);

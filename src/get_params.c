@@ -14,7 +14,7 @@
 #include "char/ft_char.h"
 #include "num/ft_num.h"
 
-static void		ft_get_flags(short *flags, const char **format)
+static void	ft_get_flags(short *flags, const char **format)
 {
 	short	i;
 
@@ -33,9 +33,9 @@ static void		ft_get_flags(short *flags, const char **format)
 	}
 }
 
-static int		ft_get_width(const char **params, va_list args)
+static int	ft_get_width(const char **params, va_list args)
 {
-	int ret;
+	int	ret;
 
 	if (**params == '*')
 	{
@@ -55,9 +55,9 @@ static int		ft_get_width(const char **params, va_list args)
 	return (ret);
 }
 
-static int		ft_get_rigor(const char **params, va_list args)
+static int	ft_get_rigor(const char **params, va_list args)
 {
-	int ret;
+	int	ret;
 
 	ret = -1;
 	if (**params == '.')
@@ -81,10 +81,10 @@ static int		ft_get_rigor(const char **params, va_list args)
 	return (ret);
 }
 
-static char		ft_get_size(const char **params)
+static char	ft_get_size(const char **params)
 {
-	char res;
-	char *sflags;
+	char	res;
+	char	*sflags;
 
 	sflags = "lhjztL";
 	while (*sflags)
@@ -104,7 +104,7 @@ static char		ft_get_size(const char **params)
 	return (0);
 }
 
-void ft_get_params(const char **format, t_params *params, va_list args)
+void	ft_get_params(const char **format, t_params *params, va_list args)
 {
 	ft_get_flags(params->flags, format);
 	params->width = ft_get_width(format, args);

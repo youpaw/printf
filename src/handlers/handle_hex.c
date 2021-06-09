@@ -13,12 +13,12 @@
 #include "ft_printf.h"
 #include "string/ft_str.h"
 
-int		ft_handle_hex(t_params *params, va_list args)
+int	ft_handle_hex(t_params *params, va_list args)
 {
-	char *res;
+	char	*res;
 
 	res = ft_itoabase(ft_util_usize(args, params->size), 16, params->type);
-	if (res && params->rigor && params->flags[3] && *res != '0')
+	if (params->rigor && params->flags[3] && *res != '0')
 		ft_util_hexpref(&res, params->type);
 	else
 		params->flags[3] = 0;

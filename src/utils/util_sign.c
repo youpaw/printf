@@ -17,8 +17,6 @@ void	ft_util_sign(char **res, const short *flags)
 {
 	char	*tmp;
 
-	if (!res || !*res)
-		return ;
 	if (**res != '-' && (flags[1] || flags[2]))
 	{
 		tmp = ft_strjoin(" ", *res);

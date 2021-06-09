@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dbutterw <dbutterw@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/06/09 21:25:28 by dbutterw          #+#    #+#              #
+#    Updated: 2021/06/09 21:25:28 by dbutterw         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 INC_DIRS		:= ./src
 LIBFT_DIR		:=	./libft
 LIBFT_INC_DIRS	:=	env avl char file graph hash_map list math memory num \

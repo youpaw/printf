@@ -15,9 +15,9 @@
 #include <stdarg.h>
 #include <stdint.h>
 
-ssize_t ft_util_size(va_list args, char size)
+ssize_t	ft_util_size(va_list args, char size)
 {
-	ssize_t value;
+	ssize_t	value;
 
 	if (size == 'l')
 		value = va_arg(args, long);
@@ -40,9 +40,9 @@ ssize_t ft_util_size(va_list args, char size)
 	return (value);
 }
 
-size_t ft_util_usize(va_list args, char size)
+size_t	ft_util_usize(va_list args, char size)
 {
-	size_t value;
+	size_t	value;
 
 	if (size == 'l')
 		value = va_arg(args, unsigned long);

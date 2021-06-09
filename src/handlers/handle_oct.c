@@ -13,13 +13,13 @@
 #include "ft_printf.h"
 #include "string/ft_str.h"
 
-int		ft_handle_oct(t_params *params, va_list args)
+int	ft_handle_oct(t_params *params, va_list args)
 {
-	char *res;
-	char *tmp;
+	char	*res;
+	char	*tmp;
 
 	res = ft_itoabase(ft_util_usize(args, params->size), 8, 0);
-	if (res && params->flags[3] && *res != '0')
+	if (params->flags[3] && *res != '0')
 	{
 		tmp = ft_strjoin("0", res);
 		free(res);

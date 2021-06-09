@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		ft_handle_flt(t_params *params, va_list args)
+int	ft_handle_flt(t_params *params, va_list args)
 {
 	(void) params;
 	(void) args;

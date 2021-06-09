@@ -13,9 +13,9 @@
 #include <stdlib.h>
 #include "string/ft_str.h"
 
-int ft_util_print(char **res)
+int	ft_util_print(char **res)
 {
-	int ret;
+	int	ret;
 
 	ret = ft_puts(*res);
 	if (*res)

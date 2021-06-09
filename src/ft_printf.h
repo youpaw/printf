@@ -15,12 +15,12 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdint.h>
-# include <monetary.h>
+# include <unistd.h>
 # define N_FLAGS 5
 # define FLAGS "-+ #0"
 # define N_TYPES 10
 
-typedef struct	s_params
+typedef struct s_params
 {
 	short		flags[N_FLAGS];
 	int			width;
@@ -29,14 +29,15 @@ typedef struct	s_params
 	char		type;
 }				t_params;
 
-typedef struct	s_handlers
+typedef struct s_handlers
 {
 	char		type;
 	int			(*handler)(t_params*, va_list);
 }				t_handlers;
 
 int				ft_printf(const char *format, ...);
-void			ft_get_params(const char **format, t_params *params, va_list args);
+void			ft_get_params(const char **format, t_params *params, \
+	va_list args);
 
 ssize_t			ft_util_size(va_list args, char size);
 size_t			ft_util_usize(va_list args, char size);
