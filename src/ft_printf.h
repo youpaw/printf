@@ -35,8 +35,8 @@ typedef struct	s_handlers
 	int			(*handler)(t_params*, va_list);
 }				t_handlers;
 
-int				ft_printf(char *format, ...);
-void			ft_get_params(char **format, t_params *params, va_list args);
+int				ft_printf(const char *format, ...);
+void			ft_get_params(const char **format, t_params *params, va_list args);
 
 ssize_t			ft_util_size(va_list args, char size);
 size_t			ft_util_usize(va_list args, char size);

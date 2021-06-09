@@ -3,7 +3,7 @@ project(ft_printf C)
 
 set(CMAKE_C_STANDARD 99)
 
-include_directories(src)
+include_directories(./src)
 
 set(LIBFT_DIR "libft")
 include_directories(${LIBFT_DIR})
@@ -49,4 +49,5 @@ add_library(${PROJECT_NAME} STATIC
         src/utils/util_size.c
         src/utils/util_width.c)
 
+target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME} ft)

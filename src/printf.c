@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "char/ft_char.h"
 
-static int		handle_format(char **format, va_list args)
+static int		handle_format(const char **format, va_list args)
 {
 	static const t_handlers	handlers[N_TYPES] =
 	{
@@ -42,7 +42,7 @@ static int		handle_format(char **format, va_list args)
 	return (ret);
 }
 
-int				ft_printf(char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		ret;
