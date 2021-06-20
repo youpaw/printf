@@ -62,13 +62,13 @@ $(NAME): $(OBJ_DIR) $(OBJS) | lib
 	libtool -static -o $(NAME) $(LIBFT) $(OBJS)
 
 lib:
-	make -C ./libft
+	make -C $(LIBFT_DIR)
 
 clean:
 	rm -rf $(OBJ_DIR)
-	make clean -C ./libft
+	make clean -C $(LIBFT_DIR)
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C ./libft
+	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
